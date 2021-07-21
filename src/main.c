@@ -32,20 +32,20 @@ int main(void)
 {
 	HAL_Init();
 
-	__HAL_RCC_GPIOD_CLK_ENABLE();  //dioda
-	__HAL_RCC_GPIOC_CLK_ENABLE();  //
+	__HAL_RCC_GPIOD_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_SPI1_CLK_ENABLE();  //spi
 
 	GPIO_InitTypeDef gpio;
 	gpio.Mode = GPIO_MODE_AF_PP;
-	gpio.Pin = GPIO_PIN_5 | GPIO_PIN_7; // SCK, MOSI
+	gpio.Pin = GPIO_PIN_5 | GPIO_PIN_7; // SCK PA5 , MOSI
 	gpio.Pull = GPIO_NOPULL;
 	gpio.Speed = GPIO_SPEED_FREQ_HIGH;
 	HAL_GPIO_Init(GPIOA, &gpio);
 
 
 	gpio.Mode = GPIO_MODE_INPUT;
-	gpio.Pin = GPIO_PIN_6; // MISO
+	gpio.Pin = GPIO_PIN_2; //input MISO  PC2 => SPI2_MISO
 	HAL_GPIO_Init(GPIOA, &gpio);
 
 	gpio.Mode = GPIO_MODE_OUTPUT_PP;
